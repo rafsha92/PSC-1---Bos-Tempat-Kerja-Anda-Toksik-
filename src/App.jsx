@@ -157,7 +157,7 @@ export default function App() {
 
     const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
     intro
-      .from('.site-nav > *', { y: -18, autoAlpha: 0, stagger: 0.08, duration: 0.65 })
+      .from('.brand', { y: -18, autoAlpha: 0, duration: 0.65 })
       .from('.hero-copy > *', { y: 40, autoAlpha: 0, stagger: 0.09, duration: 0.85 }, '-=0.45')
       .from('.hero-portrait', { xPercent: 12, autoAlpha: 0, scale: 0.94, duration: 1.1 }, '-=0.85');
 
@@ -277,6 +277,7 @@ export default function App() {
             </div>
             <div className="hero-meta">
               <span><CalendarBlank weight="duotone" />26 September 2026</span>
+              <span><Clock weight="duotone" />9.00 pagi – 12.00 tengah hari</span>
               <span><MapPin weight="duotone" />Zoom Meeting</span>
             </div>
           </div>
