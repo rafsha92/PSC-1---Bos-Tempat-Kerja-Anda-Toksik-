@@ -1,24 +1,30 @@
-name: FTP Deploy
+name: Deploy Website via FTP
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout source code
         uses: actions/checkout@v4
         
-      # NOTE: If your project requires a build step, uncomment the 4 lines below:
-      # - run: npm install -g pnpm
-      # - run: pnpm install
-      # - run: pnpm build
+      # These steps install pnpm and build your project
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm run build
 
-      - name: Upload to cPanel
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Upload via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
-          # local-dir: ./dist/ # Uncomment this line ONLY if you enabled the build steps above
+          local-dir: './dist/' # Changed from './' to './dist/'
