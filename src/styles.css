@@ -255,6 +255,7 @@ section { scroll-margin-top: 6rem; }
 .registration .angular-button { width: min(100%, 35rem); margin-top: 2.5rem; }
 .registration-meta { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 2.3rem; color: var(--muted); font-size: .95rem; font-style: italic; }
 .registration-meta i { width: .35rem; height: .35rem; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px var(--red); }
+.registration-note { max-width: 38rem; margin: 1.25rem auto 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
 
 .site-footer { min-height: 7rem; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; padding: 1.5rem max(4vw, 1.3rem); border-top: 1px solid rgba(242,27,18,.48); color: rgba(255,249,245,.64); font-size: .8rem; font-style: italic; }
 .site-footer p { margin: 0; }

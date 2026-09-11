@@ -7,30 +7,30 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const questions = [
-  { title: 'Sukar bersuara?', copy: 'Idea dan pandangan sering dipendam.' },
-  { title: 'Komunikasi tidak jelas?', copy: 'Arahan berubah, jangkaan kabur.' },
-  { title: 'Ketegangan berulang?', copy: 'Suasana kerja terasa semakin berat.' },
+  { title: 'Sukar bersuara?', copy: 'Idea, kebimbangan dan pandangan penting terus dipendam.' },
+  { title: 'Komunikasi tidak jelas?', copy: 'Arahan berubah, keutamaan kabur dan jangkaan tidak benar-benar jelas.' },
+  { title: 'Ketegangan berulang?', copy: 'Isu yang sama muncul semula walaupun semuanya kelihatan sudah selesai.' },
 ];
 
 const steps = [
-  { number: '01', title: 'Perhatikan', copy: 'Lihat semula suasana di tempat kerja.' },
-  { number: '02', title: 'Semak', copy: 'Gunakan soalan sebagai titik mula.' },
-  { number: '03', title: 'Renungkan', copy: 'Fahami perkara yang wajar diberi perhatian.' },
+  { number: '01', title: 'Perhatikan', copy: 'Kenal pasti corak yang berulang dalam komunikasi dan suasana pasukan.' },
+  { number: '02', title: 'Semak', copy: 'Gunakan soalan yang tepat untuk membezakan andaian daripada perkara yang berlaku.' },
+  { number: '03', title: 'Renungkan', copy: 'Tentukan perkara yang perlu diberi perhatian dan dibincangkan dengan lebih jelas.' },
 ];
 
 const audiences = [
-  { title: 'Pemilik bisnes', copy: 'Untuk anda yang mahu membina budaya kerja lebih jelas sebelum isu kecil menjadi konflik berulang.' },
-  { title: 'Pengurus dan ketua pasukan', copy: 'Untuk pemimpin yang perlu mengendalikan komunikasi kabur, idea yang dipendam dan ketegangan dalam pasukan.' },
-  { title: 'HR dan people leaders', copy: 'Untuk mereka yang mahu menilai corak suasana kerja melalui pemerhatian dan soalan yang lebih terarah.' },
-  { title: 'Profesional', copy: 'Untuk individu yang mahu memahami keadaan tempat kerja dan menyuarakan perkara penting dengan lebih tersusun.' },
+  { title: 'Pemilik bisnes', copy: 'Anda mahu mengesan isu budaya kerja sebelum ia mengganggu kejelasan dan kerjasama pasukan.' },
+  { title: 'Pengurus dan ketua pasukan', copy: 'Anda perlu memberi arahan dengan lebih jelas dan membuka ruang untuk pasukan bersuara.' },
+  { title: 'HR dan pemimpin organisasi', copy: 'Anda mahu menilai corak komunikasi melalui pemerhatian dan soalan yang lebih tersusun.' },
+  { title: 'Profesional', copy: 'Anda mahu memahami apa yang sedang berlaku sebelum memilih cara untuk bersuara.' },
 ];
 
 const faqs = [
-  { question: 'Apakah fokus seminar ini?', answer: 'Seminar ini memberi panduan untuk mengenal pasti petunjuk tempat kerja toksik, menyemak corak komunikasi dan merenungkan perkara yang memerlukan perhatian.' },
-  { question: 'Siapa yang sesuai menyertai?', answer: 'Pemilik bisnes, pengurus, ketua pasukan, profesional HR dan individu yang mahu memahami suasana kerja mereka dengan lebih terarah.' },
-  { question: 'Adakah seminar dijalankan secara online?', answer: 'Ya. Seminar berlangsung secara online melalui Zoom Meeting, jadi peserta boleh mengikutinya dari lokasi masing-masing.' },
-  { question: 'Bilakah seminar berlangsung dan berapa yurannya?', answer: 'Seminar berlangsung pada 26 September 2026, dari 9.00 pagi hingga 12.00 tengah hari. Yuran penyertaan ialah RM49.00.' },
-  { question: 'Bagaimanakah cara mendaftar?', answer: 'Tekan mana-mana butang “Daftar sekarang” dan lengkapkan maklumat peserta melalui borang pembayaran OnPay yang selamat.' },
+  { question: 'Apa yang akan saya pelajari?', answer: 'Anda akan melihat cara mengenal pasti petunjuk komunikasi yang tidak sihat, menyemak corak yang berulang dan menentukan perkara yang wajar diberi perhatian.' },
+  { question: 'Adakah seminar ini hanya untuk bos?', answer: 'Tidak. Seminar ini juga sesuai untuk pengurus, ketua pasukan, profesional HR dan individu yang mahu memahami suasana kerja dengan lebih terarah.' },
+  { question: 'Bagaimana seminar dijalankan?', answer: 'Seminar berlangsung secara online melalui Zoom Meeting, jadi anda boleh mengikutinya dari lokasi anda.' },
+  { question: 'Bila seminar berlangsung dan berapa yurannya?', answer: 'Seminar berlangsung pada 26 September 2026, dari 9.00 pagi hingga 12.00 tengah hari. Yuran penyertaan ialah RM49.00.' },
+  { question: 'Bagaimana cara mendaftar?', answer: 'Tekan mana-mana butang pendaftaran, kemudian lengkapkan maklumat peserta dan pembayaran melalui borang OnPay.' },
 ];
 
 function SeoStructuredData({ siteUrl = '' }) {
@@ -44,7 +44,7 @@ function SeoStructuredData({ siteUrl = '' }) {
         '@type': 'Event',
         '@id': `${pageUrl}#event`,
         name: 'Bos, Adakah Tempat Kerja Anda Toksik?',
-        description: 'Seminar online bersama Che Qiim untuk mengenal pasti petunjuk tempat kerja toksik dan menyemak corak komunikasi dengan lebih terarah.',
+        description: 'Seminar online bersama Che Qiim untuk mengenal pasti corak komunikasi yang tidak sihat dan menyemak suasana kerja dengan lebih terarah.',
         startDate: '2026-09-26T09:00:00+08:00',
         endDate: '2026-09-26T12:00:00+08:00',
         eventStatus: 'https://schema.org/EventScheduled',
@@ -184,12 +184,12 @@ function RegistrationModal({ open, onClose }) {
         <div className="registration-sheet__head">
           <div>
             <p className="eyebrow">Pendaftaran peserta</p>
-            <h2 id="registration-title">Tempah tempat anda.</h2>
+            <h2 id="registration-title">Lengkapkan pendaftaran anda.</h2>
           </div>
           <button ref={closeButtonRef} className="modal-close" type="button" onClick={onClose} aria-label="Tutup borang pendaftaran"><X weight="bold" /></button>
         </div>
         <div className="onpay-shell">
-          {embedState === 'loading' && <div className="onpay-state" role="status"><span className="loading-line" /><strong>Menyediakan borang pendaftaran…</strong><small>Sambungan selamat ke OnPay sedang dimuatkan.</small></div>}
+          {embedState === 'loading' && <div className="onpay-state" role="status"><span className="loading-line" /><strong>Menyediakan borang pendaftaran…</strong><small>Sambungan ke borang OnPay sedang dimuatkan.</small></div>}
           {embedState === 'error' && <div className="onpay-state onpay-state--error" role="alert"><strong>Borang mengambil masa lebih lama daripada biasa.</strong><small>Gunakan pautan pendaftaran terus di bawah.</small></div>}
           <div id="onpay-order-form" data-url="https://nlpmalaysia.onpay.my/order/form/45" data-only_form="1" />
           <p className={`form-fallback ${embedState === 'ready' ? 'is-ready' : ''}`}>Jika borang tidak muncul, <a href="https://nlpmalaysia.onpay.my/order/form/45" target="_blank" rel="noreferrer">buka halaman pendaftaran OnPay</a>.</p>
@@ -337,10 +337,10 @@ export default function App({ siteUrl = '' }) {
           <div className="hero-copy">
             <p className="eyebrow hero-eyebrow">Seminar eksklusif untuk pemimpin</p>
             <h1>Bos, adakah tempat kerja anda toksik?</h1>
-            <p className="hero-lead">Panduan menyemak tempat anda dengan tools khas.</p>
+            <p className="hero-lead">Kenal pasti corak komunikasi yang tidak sihat dan pelajari cara menyemak suasana kerja dengan lebih terarah.</p>
             <div className="hero-actions">
-              <AngularButton onClick={openRegistration}>Daftar sekarang — RM49.00</AngularButton>
-              <a className="text-link" href="#tentang">Terokai seminar <ArrowDown weight="bold" /></a>
+              <AngularButton onClick={openRegistration}>Sertai seminar — RM49.00</AngularButton>
+              <a className="text-link" href="#tentang">Lihat apa yang akan dipelajari <ArrowDown weight="bold" /></a>
             </div>
             <div className="hero-meta">
               <span><CalendarBlank weight="duotone" />26 September 2026</span>
@@ -371,10 +371,10 @@ export default function App({ siteUrl = '' }) {
             <div className="issues-intro chapter-head">
               <p className="eyebrow">Kenali suasana kerja anda</p>
               <h2>Nampak biasa. Tapi ada yang tak kena?</h2>
-              <p>Seminar tempat kerja toksik ini membantu anda mengenal pasti petunjuk komunikasi yang tidak sihat dan memulakan semakan dengan soalan yang tepat.</p>
+              <p>Mesyuarat makin senyap. Arahan berubah, idea dipendam dan ketegangan yang sama berulang. Seminar ini membantu anda melihat corak tersebut dengan soalan yang lebih terarah, tanpa terus membuat kesimpulan.</p>
               <div className="office-window image-scale" role="img" aria-label="Bilik mesyuarat pejabat dalam pencahayaan merah">
                 <div className="office-window__image" />
-                <span>Persekitaran membentuk perbualan.</span>
+                <span>Apa yang tidak dibincangkan tetap dirasai.</span>
               </div>
             </div>
             <div className="questions">
@@ -399,7 +399,7 @@ export default function App({ siteUrl = '' }) {
             <header className="chapter-head approach-head">
               <p className="eyebrow">Pendekatan seminar</p>
               <h2>Semak dengan <span className="inline-image" aria-hidden="true" /> tools khas.</h2>
-              <p>Panduan menyemak tempat anda dengan lebih terarah.</p>
+              <p>Kenal pasti corak, semak andaian dan tentukan perkara yang patut diberi perhatian.</p>
             </header>
             <div className="approach-layout">
               <div className="approach-visual image-scale">
@@ -427,8 +427,8 @@ export default function App({ siteUrl = '' }) {
           <div className="section-inner audience-layout">
             <header className="chapter-head audience-intro">
               <p className="eyebrow">Sesuai untuk siapa</p>
-              <h2>Pemimpin yang mahu melihat sebelum bertindak.</h2>
-              <p>Program ini sesuai dipertimbangkan oleh mereka yang berdepan komunikasi tidak jelas, idea yang sukar disuarakan atau ketegangan berulang di tempat kerja.</p>
+              <h2>Adakah ini situasi anda?</h2>
+              <p>Seminar ini sesuai jika anda memimpin pasukan, mengurus komunikasi atau cuba memahami mengapa isu yang sama terus berulang.</p>
               <a className="text-link" href="#penceramah">Kenali penceramah <ArrowDown weight="bold" /></a>
             </header>
             <div className="audience-list reveal-block">
@@ -449,12 +449,12 @@ export default function App({ siteUrl = '' }) {
               <p className="eyebrow">Kenali penceramah</p>
               <h2>Che Qiim</h2>
               <p className="speaker-role">Subject Matter Expert (SME)</p>
-              <p className="speaker-bio">Che Qiim membimbing peserta melihat semula suasana kerja melalui pemerhatian, soalan dan refleksi yang lebih tersusun. Sesi ini memberi ruang untuk memahami corak yang sering dianggap biasa tetapi boleh menjejaskan komunikasi pasukan.</p>
+              <p className="speaker-bio">Dalam seminar ini, Che Qiim membimbing peserta untuk memerhati, menyemak dan merenung agar corak yang sering dianggap biasa dapat dilihat dengan lebih jelas.</p>
               <div className="red-rule" />
               <p className="scrub-copy">
-                {'Bersama anda dalam seminar Bos, Adakah Tempat Kerja Anda Toksik?'.split(' ').map((word, index) => <span key={`${word}-${index}`}>{word} </span>)}
+                {'Jangan terus meneka. Belajar melihat corak sebelum memilih tindakan.'.split(' ').map((word, index) => <span key={`${word}-${index}`}>{word} </span>)}
               </p>
-              <AngularButton ghost onClick={openRegistration}>Sertai seminar bersama Che Qiim</AngularButton>
+              <AngularButton ghost onClick={openRegistration}>Sertai sesi bersama Che Qiim</AngularButton>
             </div>
             <div className="speaker-visual reveal-block">
               <span className="speaker-outline" aria-hidden="true">CQ</span>
@@ -492,7 +492,7 @@ export default function App({ siteUrl = '' }) {
             <header className="chapter-head faq-head">
               <p className="eyebrow">Soalan lazim</p>
               <h2>Sebelum anda sertai.</h2>
-              <p>Maklumat ringkas tentang fokus program, peserta, jadual dan proses pendaftaran seminar.</p>
+              <p>Jawapan ringkas tentang kandungan seminar, siapa yang sesuai menyertai dan cara mendaftar.</p>
             </header>
             <div className="faq-grid">
               {faqs.map((faq, index) => (
@@ -509,10 +509,11 @@ export default function App({ siteUrl = '' }) {
           <div className="registration-flare" />
           <div className="section-inner registration-inner reveal-block">
             <p className="eyebrow">Seminar eksklusif</p>
-            <h2>Mulakan dengan satu langkah.</h2>
+            <h2>Lihat apa yang selama ini terlepas pandang.</h2>
             <p className="price-label">Yuran program</p>
             <div className="price"><small>RM</small><strong>49.00</strong></div>
-            <AngularButton onClick={openRegistration}>Daftar sekarang</AngularButton>
+            <AngularButton onClick={openRegistration}>Sahkan penyertaan saya</AngularButton>
+            <p className="registration-note">Pendaftaran melalui OnPay. Seminar dijalankan secara online melalui Zoom Meeting.</p>
             <div className="registration-meta">
               <span>26 September 2026</span><i />
               <span>9.00 pagi – 12.00 tengah hari</span><i />
