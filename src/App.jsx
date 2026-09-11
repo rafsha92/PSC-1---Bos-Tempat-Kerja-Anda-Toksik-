@@ -44,7 +44,7 @@ function SeoStructuredData({ siteUrl = '' }) {
         '@type': 'Event',
         '@id': `${pageUrl}#event`,
         name: 'Bos, Adakah Tempat Kerja Anda Toksik?',
-        description: 'Seminar online bersama Che Qiim untuk mengenal pasti corak komunikasi yang tidak sihat dan menyemak suasana kerja dengan lebih terarah.',
+        description: 'Seminar tempat kerja toksik secara online bersama Che Qiim untuk mengenal pasti corak komunikasi yang tidak sihat dan menyemak suasana kerja dengan lebih terarah.',
         startDate: '2026-09-26T09:00:00+08:00',
         endDate: '2026-09-26T12:00:00+08:00',
         eventStatus: 'https://schema.org/EventScheduled',
@@ -371,7 +371,7 @@ export default function App({ siteUrl = '' }) {
             <div className="issues-intro chapter-head">
               <p className="eyebrow">Kenali suasana kerja anda</p>
               <h2>Nampak biasa. Tapi ada yang tak kena?</h2>
-              <p>Mesyuarat makin senyap. Arahan berubah, idea dipendam dan ketegangan yang sama berulang. Seminar ini membantu anda melihat corak tersebut dengan soalan yang lebih terarah, tanpa terus membuat kesimpulan.</p>
+              <p>Mesyuarat makin senyap. Arahan berubah, idea dipendam dan ketegangan yang sama berulang. Seminar tempat kerja toksik ini membantu anda melihat corak tersebut dengan soalan yang lebih terarah, tanpa terus membuat kesimpulan.</p>
               <div className="office-window image-scale" role="img" aria-label="Bilik mesyuarat pejabat dalam pencahayaan merah">
                 <div className="office-window__image" />
                 <span>Apa yang tidak dibincangkan tetap dirasai.</span>
