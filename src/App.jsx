@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
-import { ArrowDown, ArrowRight, CalendarBlank, Clock, MapPin, X } from '@phosphor-icons/react';
+import { ArrowDown, ArrowRight, CalendarBlank, Clock, MapPin, WhatsappLogo, X } from '@phosphor-icons/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,6 +17,72 @@ const steps = [
   { number: '02', title: 'Semak', copy: 'Gunakan soalan sebagai titik mula.' },
   { number: '03', title: 'Renungkan', copy: 'Fahami perkara yang wajar diberi perhatian.' },
 ];
+
+const audiences = [
+  { title: 'Pemilik bisnes', copy: 'Untuk anda yang mahu membina budaya kerja lebih jelas sebelum isu kecil menjadi konflik berulang.' },
+  { title: 'Pengurus dan ketua pasukan', copy: 'Untuk pemimpin yang perlu mengendalikan komunikasi kabur, idea yang dipendam dan ketegangan dalam pasukan.' },
+  { title: 'HR dan people leaders', copy: 'Untuk mereka yang mahu menilai corak suasana kerja melalui pemerhatian dan soalan yang lebih terarah.' },
+  { title: 'Profesional', copy: 'Untuk individu yang mahu memahami keadaan tempat kerja dan menyuarakan perkara penting dengan lebih tersusun.' },
+];
+
+const faqs = [
+  { question: 'Apakah fokus seminar ini?', answer: 'Seminar ini memberi panduan untuk mengenal pasti petunjuk tempat kerja toksik, menyemak corak komunikasi dan merenungkan perkara yang memerlukan perhatian.' },
+  { question: 'Siapa yang sesuai menyertai?', answer: 'Pemilik bisnes, pengurus, ketua pasukan, profesional HR dan individu yang mahu memahami suasana kerja mereka dengan lebih terarah.' },
+  { question: 'Adakah seminar dijalankan secara online?', answer: 'Ya. Seminar berlangsung secara online melalui Zoom Meeting, jadi peserta boleh mengikutinya dari lokasi masing-masing.' },
+  { question: 'Bilakah seminar berlangsung dan berapa yurannya?', answer: 'Seminar berlangsung pada 26 September 2026, dari 9.00 pagi hingga 12.00 tengah hari. Yuran penyertaan ialah RM49.00.' },
+  { question: 'Bagaimanakah cara mendaftar?', answer: 'Tekan mana-mana butang “Daftar sekarang” dan lengkapkan maklumat peserta melalui borang pembayaran OnPay yang selamat.' },
+];
+
+function SeoStructuredData({ siteUrl = '' }) {
+  const baseUrl = siteUrl.replace(/\/$/, '');
+  const pageUrl = baseUrl ? `${baseUrl}/` : '/';
+  const imageUrl = baseUrl ? `${baseUrl}/og.jpg` : '/og.jpg';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Event',
+        '@id': `${pageUrl}#event`,
+        name: 'Bos, Adakah Tempat Kerja Anda Toksik?',
+        description: 'Seminar online bersama Che Qiim untuk mengenal pasti petunjuk tempat kerja toksik dan menyemak corak komunikasi dengan lebih terarah.',
+        startDate: '2026-09-26T09:00:00+08:00',
+        endDate: '2026-09-26T12:00:00+08:00',
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+        image: [imageUrl],
+        location: { '@type': 'VirtualLocation', url: pageUrl },
+        performer: { '@type': 'Person', name: 'Che Qiim', jobTitle: 'Subject Matter Expert (SME)' },
+        organizer: { '@type': 'Organization', name: 'NLP Malaysia' },
+        offers: {
+          '@type': 'Offer',
+          url: 'https://nlpmalaysia.onpay.my/order/form/45',
+          price: '49.00',
+          priceCurrency: 'MYR',
+          availability: 'https://schema.org/InStock',
+        },
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: 'Seminar Tempat Kerja Toksik Malaysia 2026 | Che Qiim',
+        inLanguage: 'ms-MY',
+        mainEntity: { '@id': `${pageUrl}#event` },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      },
+    ],
+  };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+}
 
 function AngularButton({ href = '#daftar', children, ghost = false, onClick }) {
   const className = `angular-button ${ghost ? 'angular-button--ghost' : ''}`;
@@ -133,7 +199,7 @@ function RegistrationModal({ open, onClose }) {
   );
 }
 
-export default function App() {
+export default function App({ siteUrl = '' }) {
   const pageRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
@@ -246,6 +312,7 @@ export default function App() {
 
   return (
     <>
+      <SeoStructuredData siteUrl={siteUrl} />
       <a className="skip-link" href="#main-content">Langkau ke kandungan utama</a>
       <main ref={pageRef} className="site-shell" id="main-content">
         <Noise />
@@ -283,7 +350,7 @@ export default function App() {
           </div>
           <div className="hero-visual" aria-label="Che Qiim, Subject Matter Expert">
             <div className="hero-halo" />
-            <img className="hero-portrait" src="/che-qiim.webp" alt="Che Qiim memakai sut hitam dan merah" width="1086" height="1448" fetchPriority="high" decoding="async" />
+            <img className="hero-portrait" src="/che-qiim.webp" srcSet="/che-qiim-480.webp 480w, /che-qiim-768.webp 768w, /che-qiim.webp 1086w" sizes="(max-width: 800px) 94vw, 42vw" alt="Che Qiim memakai sut hitam dan merah" width="1086" height="1448" fetchPriority="high" decoding="async" />
             <div className="portrait-caption">
               <strong>Che Qiim</strong>
               <span>Subject Matter Expert (SME)</span>
@@ -304,7 +371,7 @@ export default function App() {
             <div className="issues-intro chapter-head">
               <p className="eyebrow">Kenali suasana kerja anda</p>
               <h2>Nampak biasa. Tapi ada yang tak kena?</h2>
-              <p>Mulakan dengan soalan yang tepat.</p>
+              <p>Seminar tempat kerja toksik ini membantu anda mengenal pasti petunjuk komunikasi yang tidak sihat dan memulakan semakan dengan soalan yang tepat.</p>
               <div className="office-window image-scale" role="img" aria-label="Bilik mesyuarat pejabat dalam pencahayaan merah">
                 <div className="office-window__image" />
                 <span>Persekitaran membentuk perbualan.</span>
@@ -356,6 +423,25 @@ export default function App() {
           </div>
         </section>
 
+        <section className="audience section-pad" id="sesuai-untuk">
+          <div className="section-inner audience-layout">
+            <header className="chapter-head audience-intro">
+              <p className="eyebrow">Sesuai untuk siapa</p>
+              <h2>Pemimpin yang mahu melihat sebelum bertindak.</h2>
+              <p>Program ini sesuai dipertimbangkan oleh mereka yang berdepan komunikasi tidak jelas, idea yang sukar disuarakan atau ketegangan berulang di tempat kerja.</p>
+              <a className="text-link" href="#penceramah">Kenali penceramah <ArrowDown weight="bold" /></a>
+            </header>
+            <div className="audience-list reveal-block">
+              {audiences.map((audience, index) => (
+                <article className="audience-row" key={audience.title}>
+                  <span aria-hidden="true">0{index + 1}</span>
+                  <div><h3>{audience.title}</h3><p>{audience.copy}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="speaker section-pad" id="penceramah">
           <div className="speaker-glow" />
           <div className="section-inner speaker-grid">
@@ -363,6 +449,7 @@ export default function App() {
               <p className="eyebrow">Kenali penceramah</p>
               <h2>Che Qiim</h2>
               <p className="speaker-role">Subject Matter Expert (SME)</p>
+              <p className="speaker-bio">Che Qiim membimbing peserta melihat semula suasana kerja melalui pemerhatian, soalan dan refleksi yang lebih tersusun. Sesi ini memberi ruang untuk memahami corak yang sering dianggap biasa tetapi boleh menjejaskan komunikasi pasukan.</p>
               <div className="red-rule" />
               <p className="scrub-copy">
                 {'Bersama anda dalam seminar Bos, Adakah Tempat Kerja Anda Toksik?'.split(' ').map((word, index) => <span key={`${word}-${index}`}>{word} </span>)}
@@ -371,7 +458,7 @@ export default function App() {
             </div>
             <div className="speaker-visual reveal-block">
               <span className="speaker-outline" aria-hidden="true">CQ</span>
-              <img src="/che-qiim.webp" alt="Che Qiim, penceramah seminar" width="1086" height="1448" loading="lazy" decoding="async" />
+              <img src="/che-qiim.webp" srcSet="/che-qiim-480.webp 480w, /che-qiim-768.webp 768w, /che-qiim.webp 1086w" sizes="(max-width: 800px) 92vw, 38vw" alt="Che Qiim, penceramah seminar" width="1086" height="1448" loading="lazy" decoding="async" />
             </div>
           </div>
         </section>
@@ -400,6 +487,24 @@ export default function App() {
           </div>
         </section>
 
+        <section className="faq section-pad" id="soalan-lazim">
+          <div className="section-inner">
+            <header className="chapter-head faq-head">
+              <p className="eyebrow">Soalan lazim</p>
+              <h2>Sebelum anda sertai.</h2>
+              <p>Maklumat ringkas tentang fokus program, peserta, jadual dan proses pendaftaran seminar.</p>
+            </header>
+            <div className="faq-grid">
+              {faqs.map((faq, index) => (
+                <article className="faq-item reveal-block" key={faq.question}>
+                  <span aria-hidden="true">0{index + 1}</span>
+                  <div><h3>{faq.question}</h3><p>{faq.answer}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="registration section-pad" id="daftar">
           <div className="registration-flare" />
           <div className="section-inner registration-inner reveal-block">
@@ -419,8 +524,18 @@ export default function App() {
         <footer className="site-footer">
           <p>Bos, Adakah Tempat Kerja Anda Toksik?</p>
           <a href="#utama">Kembali ke atas <ArrowRight weight="bold" /></a>
-          <p>Bersama Che Qiim</p>
+          <p>Bersama Che Qiim · Pendaftaran melalui OnPay</p>
         </footer>
+        <a
+          className="whatsapp-admin"
+          href="https://wa.me/60133271355?text=Salam%2C%20saya%20ingin%20bertanya%20tentang%20seminar%20Bos%2C%20Adakah%20Tempat%20Kerja%20Anda%20Toksik%3F"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Tanya admin melalui WhatsApp di 013-327 1355"
+        >
+          <WhatsappLogo weight="fill" aria-hidden="true" />
+          <span>Tanya admin</span>
+        </a>
       </main>
       <RegistrationModal open={registrationOpen} onClose={() => setRegistrationOpen(false)} />
     </>

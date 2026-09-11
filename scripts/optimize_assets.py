@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +16,12 @@ def save_webp(source: Path, target: Path, crop=None, quality=86):
         image.save(target, "WEBP", quality=quality, method=6)
 
 
-save_webp(ASSETS / "che-qiim-source.png", PUBLIC / "che-qiim.webp", quality=88)
+with Image.open(ASSETS / "che-qiim-source.png") as trainer:
+    trainer.load()
+    for width in (480, 768, 1086):
+        resized = trainer.resize((width, round(width * trainer.height / trainer.width)), Image.Resampling.LANCZOS)
+        suffix = "" if width == 1086 else f"-{width}"
+        resized.save(PUBLIC / f"che-qiim{suffix}.webp", "WEBP", quality=88, method=6)
 save_webp(
     ASSETS / "02-isu-tempat-kerja.png",
     PUBLIC / "office-scene.webp",
@@ -32,7 +37,7 @@ save_webp(
 
 with Image.open(ASSETS / "01-pembukaan.png") as image:
     image = image.convert("RGB")
-    image.thumbnail((1200, 675), Image.Resampling.LANCZOS)
+    image = ImageOps.fit(image, (1200, 630), method=Image.Resampling.LANCZOS, centering=(0.5, 0.5))
     image.save(PUBLIC / "og.jpg", "JPEG", quality=86, optimize=True, progressive=True)
 
 with Image.open(ASSETS / "che-qiim-source.png") as image:
