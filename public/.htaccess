@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Keep one canonical protocol and host for visitors and search engines.
+  # The forwarded-proto check prevents a redirect loop behind an SSL proxy.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+  RewriteRule ^ https://pscone.globalgenius.com.my%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
